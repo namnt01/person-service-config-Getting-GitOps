@@ -13,12 +13,15 @@ images:
 - name: image-registry.openshift-image-registry.svc:5000/book-dev/person-service:latest
   newName: quay.io/wpernath/person-service
   newTag: latest
+- digest: sha256:f6f4d1fba645f4e01f1bf527d7dbcf8abc164b3cb8f1de65cca1519e9cbe4cd6
+  name: quay.io/wpernath/person-service:latest
+  newName: quay.io/wpernath/person-service:latest
 
 # generate a configmap 
 configMapGenerator:
-  - name: app-config
-    literals:
-      - APP_GREETING=We are in DEVELOPMENT mode
+- literals:
+  - APP_GREETING=We are in DEVELOPMENT mode
+  name: app-config
       
 # this patch needs to be done, because kustomize does not change 
 # the route target service name
