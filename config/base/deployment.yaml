@@ -21,7 +21,7 @@ spec:
         deployment: person-service
     spec:
       containers:
-        - image: image-registry.openshift-image-registry.svc:5000/book-dev/person-service:latest
+        - image: quay.io/wpernath/person-service:latest
           imagePullPolicy: IfNotPresent
           name: person-service
           ports:

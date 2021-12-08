@@ -10,9 +10,6 @@ commonLabels:
 
 # replace the image tag of the container with latest
 images:
-- name: image-registry.openshift-image-registry.svc:5000/book-dev/person-service:latest
-  newName: quay.io/wpernath/person-service
-  newTag: latest
 - digest: sha256:f6f4d1fba645f4e01f1bf527d7dbcf8abc164b3cb8f1de65cca1519e9cbe4cd6
   name: quay.io/wpernath/person-service:latest
   newName: quay.io/wpernath/person-service:latest
