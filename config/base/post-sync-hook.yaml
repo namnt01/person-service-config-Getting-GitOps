@@ -12,6 +12,9 @@ spec:
       restartPolicy: Never
       containers:
         - name: post-install-job
+          env:
+            - name: NAMESPACE
+              value: book-dev
           image: "quay.io/wpernath/kustomize-ubi:v4.4.1"              
           command: 
           - /bin/sh
@@ -22,15 +25,15 @@ spec:
             echo "We are now going to fill the database by calling "
             echo "the corresponding REST service"
             
-            NUM_PERSONS=$(curl http://person-service.book-dev.svc:8080/person/count)
+            NUM_PERSONS=$(curl http://person-service.${NAMESPACE}.svc:8080/person/count)
 
             if [ $NUM_PERSONS -eq 0 ]; then
               echo "There are no persons in the database, filling some"
                
-              http --ignore-stdin --json POST person-service.book-dev.svc:8080/person firstName=Carlos lastName=Santana salutation=Mr
-              http --ignore-stdin --json POST person-service.book-dev.svc:8080/person firstName=Joe lastName=Cocker salutation=Mr
-              http --ignore-stdin --json POST person-service.book-dev.svc:8080/person firstName=Eric lastName=Clapton salutation=Mr
-              http --ignore-stdin --json POST person-service.book-dev.svc:8080/person firstName=Kurt lastName=Cobain salutation=Mr
+              http --ignore-stdin --json POST person-service.${NAMESPACE}.svc:8080/person firstName=Carlos lastName=Santana salutation=Mr
+              http --ignore-stdin --json POST person-service.${NAMESPACE}.svc:8080/person firstName=Joe lastName=Cocker salutation=Mr
+              http --ignore-stdin --json POST person-service.${NAMESPACE}.svc:8080/person firstName=Eric lastName=Clapton salutation=Mr
+              http --ignore-stdin --json POST person-service.${NAMESPACE}.svc:8080/person firstName=Kurt lastName=Cobain salutation=Mr
 
             fi
             
