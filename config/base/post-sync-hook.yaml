@@ -22,15 +22,15 @@ spec:
             echo "We are now going to fill the database by calling "
             echo "the corresponding REST service"
             
-            NUM_PERSONS=$(curl http://person-service:8080/person/count)
+            NUM_PERSONS=$(curl http://person-service.book-dev.svc:8080/person/count)
 
-            if [ $NUM_PERSON eq 0 ]; then
+            if [ $NUM_PERSONS -eq 0 ]; then
               echo "There are no persons in the database, filling some"
-              
-              http POST person-service:8080/person firstName=Carlos lastName=Santana salutation=Mr
-              http POST person-service:8080/person firstName=Joe lastName=Cocker salutation=Mr
-              http POST person-service:8080/person firstName=Eric lastName=Clapton salutation=Mr
-              http POST person-service:8080/person firstName=Kurt lastName=Cobain salutation=Mr
+               
+              http POST person-service.book-dev.svc:8080/person firstName=Carlos lastName=Santana salutation=Mr
+              http POST person-service.book-dev.svc:8080/person firstName=Joe lastName=Cocker salutation=Mr
+              http POST person-service.book-dev.svc:8080/person firstName=Eric lastName=Clapton salutation=Mr
+              http POST person-service.book-dev.svc:8080/person firstName=Kurt lastName=Cobain salutation=Mr
 
             fi
             
