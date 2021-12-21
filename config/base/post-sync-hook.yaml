@@ -27,10 +27,10 @@ spec:
             if [ $NUM_PERSONS -eq 0 ]; then
               echo "There are no persons in the database, filling some"
                
-              http POST person-service.book-dev.svc:8080/person firstName=Carlos lastName=Santana salutation=Mr
-              http POST person-service.book-dev.svc:8080/person firstName=Joe lastName=Cocker salutation=Mr
-              http POST person-service.book-dev.svc:8080/person firstName=Eric lastName=Clapton salutation=Mr
-              http POST person-service.book-dev.svc:8080/person firstName=Kurt lastName=Cobain salutation=Mr
+              http --json POST person-service.book-dev.svc:8080/person firstName=Carlos lastName=Santana salutation=Mr
+              http --json POST person-service.book-dev.svc:8080/person firstName=Joe lastName=Cocker salutation=Mr
+              http --json POST person-service.book-dev.svc:8080/person firstName=Eric lastName=Clapton salutation=Mr
+              http --json POST person-service.book-dev.svc:8080/person firstName=Kurt lastName=Cobain salutation=Mr
 
             fi
             
