@@ -5,6 +5,7 @@ commonLabels:
   org: wanja.org
 
 resources:
+- postgres.yaml
 - deployment.yaml
 - service.yaml
 - route.yaml

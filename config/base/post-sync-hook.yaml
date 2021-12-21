@@ -12,12 +12,25 @@ spec:
       restartPolicy: Never
       containers:
         - name: post-install-job
-          image: "registry.access.redhat.com/ubi8/ubi-minimal:latest"              
+          image: "quay.io/wpernath/kustomize-ubi:v4.4.1"              
           command: 
           - /bin/sh
           - -c 
           - |
             echo "WELCOME TO the post installation hook for ArgoCD "
             echo "-------------------------------------------------"
-            echo "Here we could start integration tests or health checks"
-            echo "..."
+            echo "We are now going to fill the database by calling "
+            echo "the corresponding REST service"
+            
+            NUM_PERSONS=$(curl http://person-service.svc:8080/person/count)
+
+            if [ $NUM_PERSON eq 0 ]; then
+              echo "There are no persons in the database, filling some"
+              
+              http POST person-service.svc:8080 firstName=Carlos lastName=Santana salutation=Mr
+              http POST person-service.svc:8080 firstName=Joe lastName=Cocker salutation=Mr
+              http POST person-service.svc:8080 firstName=Eric lastName=Clapton salutation=Mr
+              http POST person-service.svc:8080 firstName=Kurt lastName=Cobain salutation=Mr
+              
+            fi
+            

@@ -1,4 +1,4 @@
-namePrefix: stage-  
+#namePrefix: stage-  
 commonLabels:
   variant: stage
 
@@ -33,10 +33,10 @@ patches:
 
 # this patch needs to be done, because kustomize does not change 
 # the route target service name
-  - patch: |-
-      - op: replace
-        path: /spec/to/name
-        value: stage-person-service
-    target:
-      kind: Route
+#  - patch: |-
+#      - op: replace
+#        path: /spec/to/name
+#        value: stage-person-service
+#    target:
+#      kind: Route
 

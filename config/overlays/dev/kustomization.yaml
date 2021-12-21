@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
 - ../../base
 
-namePrefix: dev-
+#namePrefix: dev-
 commonLabels:
   variant: development
 
@@ -22,10 +22,10 @@ configMapGenerator:
       
 # this patch needs to be done, because kustomize does not change 
 # the route target service name
-patches:
-- patch: |-
-    - op: replace
-      path: /spec/to/name
-      value: dev-person-service
-  target:
-    kind: Route
+#patches:
+#- patch: |-
+#    - op: replace
+#      path: /spec/to/name
+#      value: dev-person-service
+# target:
+#   kind: Route
