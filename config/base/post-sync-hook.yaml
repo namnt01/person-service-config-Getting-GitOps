@@ -36,7 +36,7 @@ spec:
               http --ignore-stdin --json POST ${SERVICE_URL} firstName=Eric lastName=Clapton salutation=Mr
               http --ignore-stdin --json POST ${SERVICE_URL} firstName=Kurt lastName=Cobain salutation=Mr
 
-            elif
+            else
               echo "There are already $NUM_PERSONS persons in the database."
               http --ignore-stdin ${SERVICE_URL} 
             fi
