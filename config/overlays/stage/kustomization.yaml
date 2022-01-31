@@ -2,51 +2,43 @@
 commonLabels:
   variant: stage
 
-bases:
-- ../../base
 
 # in stage we have 2 replicas
 replicas:
-- name: person-service
-  count: 2
+- count: 2
+  name: person-service
 
 # replace the image tag of the container with stage
 images:
-  - name: quay.io/wpernath/person-service:latest
-    newName: quay.io/wpernath/person-service
-    newTag: v1.0.0-test
+- digest: sha256:2814b53791b4a503d51366fbea76ac7cafcd2613b3fce68f5e877825b795b1a5
+  name: quay.io/wpernath/person-service:latest
+  newName: quay.io/wpernath/person-service:v1.0.1-test2
 
 # generate a configmap 
 configMapGenerator:
-  - name: app-config
-    literals:
-      - APP_GREETING=We are in STAGING mode
+- literals:
+  - APP_GREETING=We are in STAGING mode
+  name: app-config
 
 # apply some patches
-patches:
   # apply health checks to deployment
-  - path: apply-health-checks.yaml
-    target:
-      version: v1
-      kind: Deployment
-      name: person-service
 
 # This patch provides the name of the namespace into the env-value of the Job
 # This is needed because we want to call the target rest service of person-service
 # which is: person-service.$NAMESPACE.svc:8080
-  - patch: |-
-      - op: replace
-        path: /spec/template/spec/containers/0/env/0/value
-        value: book-stage
-    target:
-      kind: Job
-
-# this patch needs to be done, because kustomize does not change 
-# the route target service name
-#  - patch: |-
-#      - op: replace
-#        path: /spec/to/name
-#        value: stage-person-service
-#    target:
-#      kind: Route
-
+patches:
+- path: apply-health-checks.yaml
+  target:
+    kind: Deployment
+    name: person-service
+    version: v1
+- patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/env/0/value
+      value: book-stage
+  target:
+    kind: Job
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
