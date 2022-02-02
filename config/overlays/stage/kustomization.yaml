@@ -27,11 +27,11 @@ configMapGenerator:
 # This is needed because we want to call the target rest service of person-service
 # which is: person-service.$NAMESPACE.svc:8080
 patches:
-- path: apply-health-checks.yaml
-  target:
-    kind: Deployment
-    name: person-service
-    version: v1
+#- path: apply-health-checks.yaml
+#  target:
+#    kind: Deployment
+#    name: person-service
+#    version: v1
 - patch: |-
     - op: replace
       path: /spec/template/spec/containers/0/env/0/value
