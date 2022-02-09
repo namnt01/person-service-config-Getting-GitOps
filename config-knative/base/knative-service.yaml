@@ -12,6 +12,9 @@ spec:
       containers:
       - name: person-service-api
         image: quay.io/wpernath/person-service:latest
+        ports:
+        - containerPort: 8080
+          protocol: TCP
         envFrom:
           - configMapRef:
               name: app-config
@@ -23,6 +26,6 @@ spec:
             cpu: 500m
             memory: 256Mi
           requests:
-            cpu: 5m
+            cpu: 10m
             memory: 128Mi          
 

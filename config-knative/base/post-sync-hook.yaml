@@ -14,7 +14,7 @@ spec:
         - name: post-install-job
           env:
             - name: NAMESPACE
-              value: book-dev
+              value: book-kn
           image: "quay.io/wpernath/kustomize-ubi:v4.4.1"              
           command: 
           - /bin/sh
@@ -24,9 +24,10 @@ spec:
             echo "-------------------------------------------------"
             echo "We are now going to fill the database by calling "
             echo "the corresponding REST service"
-            
-            SERVICE_URL=person-service.${NAMESPACE}.svc:8080/person
-            NUM_PERSONS=$(curl http://$SERVICE_URL/count)
+            #http://person-service-book-kn.apps.book.ocp.lan/
+
+            SERVICE_URL=person-service-${NAMESPACE}.apps.book.ocp.lan/person
+            NUM_PERSONS=$(curl http://${SERVICE_URL}/count)
 
             echo "SERVICE_URL = http://${SERVICE_URL}"
             
