@@ -1,0 +1,34 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+
+#namePrefix: dev-
+commonLabels:
+  variant: development
+
+
+# replace the image tag of the container with latest
+images:
+- digest: sha256:f46f65b42d61a6a2fde5a06e5c729cb5ef2ac8c1963d5dc5bc0ba647fe065711
+  name: quay.io/wpernath/person-service:latest
+  newName: quay.io/wpernath/person-service:latest
+
+
+# This patch provides the name of the namespace into the env-value of the Job
+# This is needed because we want to call the target rest service of person-service
+# which is: person-service.$NAMESPACE.svc:8080
+patches:
+- patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/env/0/value
+      value: book-kn
+  target:
+    kind: Job
+
+- patch: |-
+    - op: replace
+      path: /data/APP_GREETING
+      value: Hello from knative service in DEV mode
+  target: 
+    kind: ConfigMap

@@ -1,0 +1,28 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: person-service
+spec:
+  template:
+    metadata:
+      annotations:
+        # Target 10 in-flight-requests per pod.
+        autoscaling.knative.dev/target: "10"
+    spec:
+      containers:
+      - name: person-service-api
+        image: quay.io/wpernath/person-service:latest
+        envFrom:
+          - configMapRef:
+              name: app-config
+          - secretRef:
+              name: wanja-pguser-wanja
+            prefix: DB_
+        resources: 
+          limits:
+            cpu: 500m
+            memory: 256Mi
+          requests:
+            cpu: 5m
+            memory: 128Mi          
+
