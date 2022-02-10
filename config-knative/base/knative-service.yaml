@@ -6,8 +6,18 @@ spec:
   template:
     metadata:
       annotations:
-        # Target 10 in-flight-requests per pod.
+        # How many concurrent requests per pod until scaling up
         autoscaling.knative.dev/target: "10"
+
+        # scaling parameteres 
+        autoscaling.knative.dev/max-scale: "15"
+        autoscaling.knative.dev/min-scale: "0"
+
+        # scale back to zero if no requests come in within 15s
+        autoscaling.knative.dev/window: "15s"
+
+        # how many pods should be started initially 
+        autoscaling.knative.dev/init: "1"
     spec:
       containers:
       - name: person-service-api

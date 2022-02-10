@@ -3,16 +3,22 @@ kind: Kustomization
 resources:
 - ../../base
 
-#namePrefix: dev-
 commonLabels:
   variant: development
-
 
 # replace the image tag of the container with latest
 images:
 - name: quay.io/wpernath/person-service:latest
-  newTag: v1.8.9-native
+#  newTag: v1.8.9-native
+  newTag: v1.8.9-jvm
 
+# generate a configmap 
+configMapGenerator:
+- name: app-config
+  literals:
+  - APP_GREETING=We are in DEVELOPMENT mode
+  options:
+    disableNameSuffixHash: true
 
 # This patch provides the name of the namespace into the env-value of the Job
 # This is needed because we want to call the target rest service of person-service
@@ -25,9 +31,3 @@ patches:
   target:
     kind: Job
 
-- patch: |-
-    - op: replace
-      path: /data/APP_GREETING
-      value: Hello from knative service in DEV mode
-  target: 
-    kind: ConfigMap

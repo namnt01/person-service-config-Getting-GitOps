@@ -6,6 +6,6 @@ commonLabels:
 
 resources:
 - postgres.yaml
-- config-map.yaml
+#- config-map.yaml
 - knative-service.yaml
 - post-sync-hook.yaml
