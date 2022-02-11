@@ -3,6 +3,7 @@ kind: Kustomization
 
 commonLabels:
   org: wanja.org
+  app.kubernetes.io/part-of: person-service
 
 resources:
 - postgres.yaml
