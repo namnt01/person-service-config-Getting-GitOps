@@ -11,7 +11,8 @@ replicas:
 # replace the image tag of the container with stage
 images:
 - name: quay.io/wpernath/person-service:latest
-  newName: quay.io/wpernath/person-service:v1.8.10-native
+  newName: quay.io/wpernath/person-service
+  newTag: v1.8.10-native
 
 # generate a configmap 
 configMapGenerator:
