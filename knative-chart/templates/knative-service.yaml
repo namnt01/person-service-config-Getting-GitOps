@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
       - name: person-service-api
-        image: quay.io/wpernath/person-service:v1.8.9-{{ .Values.deployment.tag }}
+        image: quay.io/wpernath/person-service:v1.8.10-{{ .Values.deployment.tag }}
         ports:
         - containerPort: 8080
           protocol: TCP
