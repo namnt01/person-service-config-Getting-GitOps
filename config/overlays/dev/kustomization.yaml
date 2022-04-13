@@ -10,7 +10,7 @@ commonLabels:
 
 # replace the image tag of the container with latest
 images:
-- digest: sha256:5e24114e71c3d7610d6198b1b1fe192cb341f2689d0f6e5a12ea47f08a010fe0
+- digest: sha256:4ea662b9f877f528a8fe6b709d6193b2077a3d447f5b2714d9cd0b30e0b6f1e2
   name: quay.io/wpernath/person-service:latest
   newName: quay.io/wpernath/person-service:latest
 
