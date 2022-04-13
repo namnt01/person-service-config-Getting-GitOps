@@ -10,9 +10,9 @@ replicas:
 
 # replace the image tag of the container with stage
 images:
-- name: quay.io/wpernath/person-service:latest
-  newName: quay.io/wpernath/person-service
-  newTag: v1.8.10-native
+- digest: sha256:4ea662b9f877f528a8fe6b709d6193b2077a3d447f5b2714d9cd0b30e0b6f1e2
+  name: quay.io/wpernath/person-service:latest
+  newName: quay.io/wpernath/person-service:v1.6.0-stage
 
 # generate a configmap 
 configMapGenerator:
