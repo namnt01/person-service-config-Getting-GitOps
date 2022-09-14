@@ -17,7 +17,7 @@ images:
 # generate a configmap 
 configMapGenerator:
 - literals:
-  - APP_GREETING=We are in DEVELOPMENT mode
+  - APP_GREETING=Hello gitOps interested people! Hope you like it!
   name: app-config
 
 # This patch provides the name of the namespace into the env-value of the Job
