@@ -1,4 +1,4 @@
-apiVersion: app/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -10,7 +10,6 @@ spec:
   selector:
     matchLabels:
       deployment: person-service
-      env: dev
   strategy:
     rollingUpdate:
       maxSurge: 25%
