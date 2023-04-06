@@ -7,9 +7,6 @@ metadata:
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
-  selector:
-    matchLabels:
-      deployment: person-service
   strategy:
     rollingUpdate:
       maxSurge: 25%
