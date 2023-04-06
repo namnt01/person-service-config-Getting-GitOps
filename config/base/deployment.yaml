@@ -9,11 +9,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: person-service
       deployment: person-service
-      app.kubernetes.io/part-of: person-service
-      org: wanja.org
-      variant: development
   strategy:
     rollingUpdate:
       maxSurge: 25%
