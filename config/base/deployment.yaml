@@ -21,7 +21,7 @@ spec:
         deployment: person-service
     spec:
       containers:
-        - image: quay.io/wpernath/person-service:latest
+        - image: quay.io/nam_nt/person-service:latest
           imagePullPolicy: IfNotPresent
           name: person-service
           ports:
