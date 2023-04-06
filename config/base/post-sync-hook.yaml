@@ -15,7 +15,7 @@ spec:
           env:
             - name: NAMESPACE
               value: book-dev
-          image: "quay.io/wpernath/kustomize-ubi:v4.4.1"              
+          image: "quay.io/nam_nt/kustomize-ubi:latest"              
           command: 
           - /bin/sh
           - -c 
