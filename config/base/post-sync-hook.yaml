@@ -25,7 +25,7 @@ spec:
             echo "We are now going to fill the database by calling "
             echo "the corresponding REST service"
             
-            SERVICE_URL=devperson-service.${NAMESPACE}.svc:8080/person
+            SERVICE_URL=devperson-service.${NAMESPACE}.svc:8083/person
             NUM_PERSONS=$(curl http://$SERVICE_URL/count)
 
             if [ $NUM_PERSONS -eq 0 ]; then
