@@ -31,7 +31,7 @@ spec:
             - configMapRef:
                 name: app-config
             - secretRef:
-                name: wanjaserver
+                name: wanja-pguser-wanja
               prefix: DB_
           resources: 
             limits:
