@@ -9,6 +9,6 @@ spec:
     targetPort: 8083-tcp
   to:
     kind: Service
-    name: person-service
+    name: devperson-service
     weight: 100
   wildcardPolicy: None
