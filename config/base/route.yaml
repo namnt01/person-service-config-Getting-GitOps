@@ -6,7 +6,7 @@ metadata:
   name: person-service
 spec:
   port:
-    targetPort: 8080-tcp
+    targetPort: 8083-tcp
   to:
     kind: Service
     name: person-service
